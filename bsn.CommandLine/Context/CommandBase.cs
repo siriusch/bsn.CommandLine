@@ -34,6 +34,8 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 
+using bsn.GoldParser.Text;
+
 namespace bsn.CommandLine.Context {
 	public abstract class CommandBase<TExecutionContext>: ContextItem<TExecutionContext> where TExecutionContext: class, IExecutionContext<TExecutionContext> {
 		private readonly CommandBase<TExecutionContext> parentCommand;
@@ -70,7 +72,7 @@ namespace bsn.CommandLine.Context {
 			yield break;
 		}
 
-		public override void WriteItemHelp(TextWriter writer, TExecutionContext executionContext) {
+		public override void WriteItemHelp(RichTextWriter writer, TExecutionContext executionContext) {
 			writer.WriteLine(Description);
 			List<ITagItem<TExecutionContext>> parameters = new List<ITagItem<TExecutionContext>>(GetCommandTags());
 			if (parameters.Count > 0) {
@@ -171,7 +173,7 @@ namespace bsn.CommandLine.Context {
 			Execute(executionContext, tags);
 		}
 
-		private void WriteCommandName(TextWriter writer) {
+		private void WriteCommandName(RichTextWriter writer) {
 			if ((parentCommand != null) && (!(parentCommand is ContextBase<TExecutionContext>))) {
 				parentCommand.WriteCommandName(writer);
 			}

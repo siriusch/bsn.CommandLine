@@ -32,6 +32,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
+using bsn.GoldParser.Text;
+
 namespace bsn.CommandLine.Context {
 	public abstract class ContextItem<TExecutionContext>: INamedItem where TExecutionContext: class, IExecutionContext<TExecutionContext> {
 		private static readonly Dictionary<Type, NamedItemAttribute> nameAttributes = new Dictionary<Type, NamedItemAttribute>();
@@ -60,11 +62,11 @@ namespace bsn.CommandLine.Context {
 			}
 		}
 
-		public virtual void WriteItemHelp(TextWriter writer, TExecutionContext executionContext) {
+		public virtual void WriteItemHelp(RichTextWriter writer, TExecutionContext executionContext) {
 			WriteNameLine(writer, null);
 		}
 
-		protected internal void WriteNameLine(TextWriter writer, string prefix) {
+		protected internal void WriteNameLine(RichTextWriter writer, string prefix) {
 			int padding = 14;
 			if (!string.IsNullOrEmpty(prefix)) {
 				writer.Write(prefix);

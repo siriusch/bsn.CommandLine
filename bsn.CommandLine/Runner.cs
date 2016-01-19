@@ -30,11 +30,13 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
 
 using bsn.CommandLine.Context;
 using bsn.CommandLine.Parser;
+using bsn.GoldParser.Text;
 
 namespace bsn.CommandLine {
 	public class Runner<TExecutionContext> where TExecutionContext: class, IExecutionContext<TExecutionContext> {
@@ -51,10 +53,11 @@ namespace bsn.CommandLine {
 
 		public void Run() {
 			RootContext<TExecutionContext> rootContext = executionContext.RootContext;
-			TextWriter output = executionContext.Output;
+			RichTextWriter output = executionContext.Output;
 			Debug.Assert(rootContext != null);
 			executionContext.Context = rootContext;
 			do {
+				output.Reset();
 				output.WriteLine();
 				WriteContextName(output, executionContext.Context, '>');
 				output.Write(' ');
@@ -66,12 +69,16 @@ namespace bsn.CommandLine {
 						List<CommandBase<TExecutionContext>> availableCommands = new List<CommandBase<TExecutionContext>>(CommandBase<TExecutionContext>.Filter(command.GetAvailableCommands(), s));
 						if (availableCommands.Count < 1) {
 							if (command == executionContext.Context) {
+								output.SetForeground(Color.Red);
 								output.WriteLine("The following command was not found: {0}", s);
+								output.Reset();
 							}
 							break;
 						}
 						if (availableCommands.Count > 1) {
+							output.SetForeground(Color.Yellow);
 							output.WriteLine("Ambiguous command name for '{0}':", s);
+							output.Reset();
 							foreach (CommandBase<TExecutionContext> availableCommand in availableCommands) {
 								output.Write(' ');
 								output.WriteLine(availableCommand.Name);
@@ -90,13 +97,15 @@ namespace bsn.CommandLine {
 						}
 					}
 				} catch (SystemException ex) {
+					output.SetForeground(Color.Red);
 					output.WriteLine("Error: {0}", ex.Message);
 					Debug.WriteLine(ex);
+					output.Reset();
 				}
 			} while (executionContext.Context != null);
 		}
 
-		private void WriteContextName(TextWriter output, ContextBase<TExecutionContext> context, char separator) {
+		private void WriteContextName(RichTextWriter output, ContextBase<TExecutionContext> context, char separator) {
 			if (context != null) {
 				WriteContextName(output, context.ParentContext, ' ');
 				output.Write(context.Name);

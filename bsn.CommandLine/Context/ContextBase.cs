@@ -29,7 +29,10 @@
 //  
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+
+using bsn.GoldParser.Text;
 
 namespace bsn.CommandLine.Context {
 	public abstract class ContextBase<TExecutionContext>: CommandBase<TExecutionContext>, INamedItemContainer<CollectionBase<TExecutionContext>>, INamedItemContainer<CommandBase<TExecutionContext>>, INamedItemContainer<ConfigurationBase<TExecutionContext>>,
@@ -104,18 +107,20 @@ namespace bsn.CommandLine.Context {
 			}
 		}
 
-		public override void WriteItemHelp(TextWriter writer, TExecutionContext executionContext) {
+		public override void WriteItemHelp(RichTextWriter writer, TExecutionContext executionContext) {
 			writer.WriteLine("The following commands are available:");
 			ContextBase<TExecutionContext> currentContext = null;
 			foreach (CommandBase<TExecutionContext> command in GetAvailableCommands()) {
 				if (command.ParentContext != currentContext) {
 					currentContext = command.ParentContext;
 					writer.WriteLine();
+					writer.SetForeground(Color.White);
 					if (ReferenceEquals(currentContext, this)) {
 						writer.WriteLine("Commands in this context:");
 					} else {
 						writer.WriteLine("Commands inherited from {0} context:", currentContext.Name);
 					}
+					writer.Reset();
 				}
 				writer.Write(' ');
 				command.WriteNameLine(writer, null);
