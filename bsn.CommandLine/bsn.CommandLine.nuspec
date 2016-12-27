@@ -18,6 +18,6 @@
 	<files>
 		<file src="bin\$Configuration$\bsn.CommandLine.dll" target="lib" />
 		<file src="bin\$Configuration$\bsn.CommandLine.pdb" target="lib" />
-		<file src="bin\$Configuration$\bsn.CommandLine.xml" target="lib" />
+		<!--file src="bin\$Configuration$\bsn.CommandLine.xml" target="lib" /-->
 	</files>
 </package>
