@@ -1,2 +1,0 @@
-﻿Insert build artifacts here:
-- bsn.GoldParser

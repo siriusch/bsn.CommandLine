@@ -1,15 +1,22 @@
-﻿bsn CommandLine Library
------------------------
+bsn CommandLine Library
+=======================
 
-Copyright 2010 by Arsène von Wyss - avw@gmx.ch
+Copyright 2009-2016 by Arsène von Wyss - arsene.vonwyss@sirius.ch
 
 Development has been supported by Sirius Technologies AG, Basel
 
-Source:
+What is it?
+-----------
 
-https://bsn-commandline.googlecode.com/hg/
+The library provides a framework for parsing and executing commands (verbs) in a way similar to the NETSH CLI. It is used for the [ModuleStore](https://github.com/siriusch/bsn.ModuleStore) CLI application.
 
-License:
+Source
+------
+
+[https://github.com/siriusch/bsn.CommandLine](https://github.com/siriusch/bsn.CommandLine)
+
+License
+-------
 
 The library is distributed under the GNU Lesser General Public License:
 http://www.gnu.org/licenses/lgpl.html

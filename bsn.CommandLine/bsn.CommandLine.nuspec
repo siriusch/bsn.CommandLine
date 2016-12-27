@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>bsn.CommandLine</id>
+		<version>1.0.0</version>
+		<authors>avonwyss</authors>
+		<owners>avonwyss</owners>
+		<licenseUrl>https://www.gnu.org/licenses/lgpl-3.0.en.html</licenseUrl>
+		<projectUrl>https://github.com/siriusch/bsn.CommandLine</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>NETSH-like command line interpreter, used by bsn ModuleStore</description>
+		<copyright>Copyright 2009-2016 Arsène von Wyss</copyright>
+		<tags>bsn CommandLine</tags>
+		<dependencies>
+			<dependency id="bsn.GoldParser" version="2.0.77">
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="bin\$Configuration$\bsn.CommandLine.dll" target="lib" />
+		<file src="bin\$Configuration$\bsn.CommandLine.pdb" target="lib" />
+		<file src="bin\$Configuration$\bsn.CommandLine.xml" target="lib" />
+	</files>
+</package>

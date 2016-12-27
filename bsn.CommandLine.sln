@@ -1,9 +1,17 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bsn.CommandLine", "bsn.CommandLine\bsn.CommandLine.csproj", "{0F603313-DA30-4402-AB10-D0A94F01FA69}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bsn.CommandLine.Test", "bsn.CommandLine.Test\bsn.CommandLine.Test.csproj", "{1E42C4A2-5EFD-48CC-A7E1-DB40D5954E3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F311E365-D195-4852-A202-8B5AB7C02532}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Rebracer.xml = Rebracer.xml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
